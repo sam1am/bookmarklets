@@ -159,7 +159,7 @@ function generateBookmarkletPageHTML(bookmarklet) {
       </div>
       
       <div class="flex">
-        <a href="/" class="text-indigo-600 hover:text-indigo-800">← Back to all bookmarklets</a>
+        <a href="/bookmarklets" class="text-indigo-600 hover:text-indigo-800">← Back to all bookmarklets</a>
       </div>
     </main>
     
