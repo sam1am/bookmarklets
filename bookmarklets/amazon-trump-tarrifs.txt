@@ -1,0 +1,190 @@
+Amazon Trump Tarrif Calculator
+---
+On any Amazon product page, this bookmarklet will show how much of the price comes from Trump's tarrifs. It pulls the current tarrif rate from https://www.tradecomplianceresourcehub.com/2025/04/29/trump-2-0-tariff-tracker/ using r.jina.ai and displays the calculation at the top of the product page. 
+---
+javascript:(function(){
+  // Create a loading indicator
+  const loadingBar = document.createElement('div');
+  loadingBar.style.cssText = 'position:fixed;top:0;left:0;width:100%;background:#f0f8ff;padding:12px;text-align:center;z-index:99999;font-family:Arial;box-shadow:0 2px 5px rgba(0,0,0,0.2);';
+  loadingBar.innerHTML = '<strong>Trump Tariff Calculator:</strong> Loading tariff data...';
+  document.body.prepend(loadingBar);
+  
+  // Find country of origin with better text cleanup
+  let country = '';
+  const originElements = document.querySelectorAll('th.a-color-secondary.a-size-base.prodDetSectionEntry');
+  originElements.forEach(el => {
+    if(el.textContent.trim() === 'Country of Origin') {
+      // Get the raw text and clean it up thoroughly
+      let rawCountry = el.nextElementSibling.textContent;
+      
+      // Log the raw country text and its character codes for debugging
+      console.log("Raw country text:", rawCountry);
+      console.log("Character codes:", [...rawCountry].map(c => c.charCodeAt(0)));
+      
+      // Clean up the country name - remove all non-alphabetic characters except spaces and common punctuation
+      country = rawCountry
+        .replace(/[\u200E\u200F\u061C\u202A-\u202E\u2066-\u2069]/g, '') // Remove bidirectional control characters
+        .replace(/[^\w\s.,'()-]/g, '') // Keep only letters, numbers, spaces, and basic punctuation
+        .trim(); // Remove leading/trailing whitespace
+      
+      console.log("Cleaned country name:", country);
+    }
+  });
+  
+  if(!country) {
+    loadingBar.innerHTML = '<strong>Trump Tariff Calculator:</strong> Country of origin not found on this page.';
+    return;
+  }
+  
+  // Find product price
+  let price = 0;
+  const priceElement = document.querySelector('.a-price .a-offscreen');
+  if(priceElement) {
+    price = parseFloat(priceElement.textContent.replace(/[^0-9.]/g, ''));
+  } else {
+    const priceWhole = document.querySelector('.a-price-whole');
+    const priceFraction = document.querySelector('.a-price-fraction');
+    if(priceWhole && priceFraction) {
+      price = parseFloat(priceWhole.textContent.replace(/[^0-9]/g, '') + '.' + priceFraction.textContent);
+    }
+  }
+  
+  if(!price) {
+    loadingBar.innerHTML = '<strong>Trump Tariff Calculator:</strong> Product price not found on this page.';
+    return;
+  }
+  
+  console.log("Product price found:", price);
+  
+  // Check for USA - set tariff to 0%
+  if(country.match(/usa|united states|united states of america/i)) {
+    console.log("USA product detected - setting tariff to 0%");
+    displayResults(country, 0, price);
+    return;
+  }
+  
+  // Fetch tariff data
+  fetch('https://r.jina.ai/https://www.tradecomplianceresourcehub.com/2025/04/29/trump-2-0-tariff-tracker/')
+    .then(response => response.text())
+    .then(data => {
+      console.log("Tariff data fetched successfully");
+      
+      // Extract the markdown content between the markers
+      const mdContent = data.split('Markdown Content:')[1].trim();
+      
+      // Parse the markdown table to find the country and its tariff
+      let tariffRate = 0;
+      let tariffInfo = '';
+      const lines = mdContent.split('\n');
+      
+      // For China debugging - find all China related lines
+      if(country.toLowerCase() === 'china') {
+        console.log("Debugging China tariff data:");
+        lines.forEach((line, index) => {
+          if(line.toLowerCase().includes('china')) {
+            console.log(`Line ${index}:`, line);
+          }
+        });
+      }
+      
+      // First check for exact country match
+      const countryPattern = new RegExp(`\\| \\*\\*${country}\\*\\*`, 'i');
+      console.log("Looking for pattern:", countryPattern);
+      
+      for(let i = 0; i < lines.length; i++) {
+        if(countryPattern.test(lines[i])) {
+          console.log("Found country match in line:", lines[i]);
+          // Found the country, extract the tariff rate
+          // Look for a percentage in this line or the next few lines
+          for(let j = i; j < i + 5 && j < lines.length; j++) {
+            const rateMatch = lines[j].match(/(\d+)%/);
+            if(rateMatch) {
+              tariffRate = parseInt(rateMatch[1]);
+              tariffInfo = lines[i] + ' ' + lines[i+1] + ' ' + lines[i+2];
+              console.log("Found tariff rate:", tariffRate, "in line:", lines[j]);
+              break;
+            }
+          }
+          break;
+        }
+      }
+      
+      // Special handling for China
+      if(country.toLowerCase() === 'china') {
+        // More aggressive China search - even if we didn't find an exact match
+        console.log("Special handling for China, current tariff rate found:", tariffRate);
+        
+        // Try a more direct China search
+        for(let i = 0; i < lines.length; i++) {
+          if((lines[i].toLowerCase().includes('china') || lines[i].includes('**China**')) && 
+             (lines[i].includes('Reciprocal tariff') || lines[i+1].includes('Reciprocal tariff'))) {
+            console.log("Found potential China tariff line:", lines[i]);
+            
+            // Look ahead a few lines for the rate
+            for(let j = i; j < i + 10 && j < lines.length; j++) {
+              const chinaRateMatch = lines[j].match(/(\d+)%/);
+              if(chinaRateMatch) {
+                console.log("Found China rate in line", j, ":", lines[j], "Rate:", chinaRateMatch[1]);
+                tariffRate = parseInt(chinaRateMatch[1]);
+                break;
+              }
+            }
+            
+            if(tariffRate > 0) break;
+          }
+        }
+        
+        // Explicit fallback to 125% for China if we still don't have a rate
+        if(tariffRate === 0 || tariffRate < 100) {
+          console.log("Falling back to hard-coded 125% for China");
+          tariffRate = 125;
+          tariffInfo = "China has a 125% reciprocal tariff according to the latest data.";
+        }
+      }
+      
+      // If still not found, use the baseline tariff of 10%
+      if(tariffRate === 0) {
+        console.log("No specific tariff found, using baseline 10%");
+        tariffRate = 10; // Default baseline
+        tariffInfo = "Using baseline 10% reciprocal tariff rate.";
+      }
+      
+      displayResults(country, tariffRate, price);
+    })
+    .catch(error => {
+      console.error("Error fetching tariff data:", error);
+      loadingBar.innerHTML = `<strong>Trump Tariff Calculator:</strong> Error fetching tariff data: ${error.message}`;
+    });
+    
+  function displayResults(country, tariffRate, price) {
+    console.log("Displaying results with country:", country, "tariff rate:", tariffRate, "price:", price);
+    
+    // CORRECTED MATH: Calculate base price and tariff amount
+    const tariffRateDecimal = tariffRate / 100;
+    const basePrice = (price / (1 + tariffRateDecimal)).toFixed(2);
+    const tariffAmount = (price - basePrice).toFixed(2);
+    
+    // Create the tariff information bar
+    loadingBar.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="flex:1;text-align:left;padding:0 10px;">
+          <strong>Origin:</strong> ${country} 
+          <span style="margin-left:10px;background:#ffe8e8;padding:2px 6px;border-radius:4px;">
+            <strong>Tariff Rate:</strong> ${tariffRate}%
+          </span>
+        </div>
+        <div style="flex:1;text-align:center;font-size:16px;">
+          <strong>Base Price:</strong> $${basePrice} + <strong>Tariff:</strong> $${tariffAmount} = <strong>Total:</strong> $${price.toFixed(2)}
+        </div>
+        <div style="flex:1;text-align:right;">
+          <button id="close-tariff-bar" style="padding:3px 8px;cursor:pointer;">Close</button>
+        </div>
+      </div>
+    `;
+    
+    // Add event listener to close button
+    document.getElementById('close-tariff-bar').addEventListener('click', function() {
+      loadingBar.remove();
+    });
+  }
+})();
