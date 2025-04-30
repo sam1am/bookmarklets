@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Image Saver - Bookmarklet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <header class="mb-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-indigo-700">
+          <a href="/" class="hover:text-indigo-900">Bookmarklets</a>
+        </h1>
+      </div>
+    </header>
+    
+    <main>
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Quick Image Saver</h2>
+        <div class="prose max-w-none mb-6">
+          <p>Display a simple list all images on a page for easy saving. Right click any image to save.</p>
+        </div>
+        
+        <div class="mb-8">
+          <h3 class="text-lg font-semibold mb-2">Installation:</h3>
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <p class="mb-4">Drag this button to your bookmarks bar:</p>
+            <div class="flex">
+              <a href="javascript:!function()%7Bfor(var%20e%3Ddocument.getElementsByTagName(%22img%22)%2Ct%3D%5B%5D%2Cn%3D0%3Bn%3Ce.length%3Bn%2B%2B)e%5Bn%5D.src%26%26t.push('%3Ca%20href%3D%22'%2Be%5Bn%5D.src%2B'%22%20target%3D%22_blank%22%3E%3Cimg%20src%3D%22'%2Be%5Bn%5D.src%2B'%22%20style%3D%22max-height%3A200px%3B%22%3E%3C%2Fa%3E')%3B0%3D%3D%3Dt.length%3Falert(%22No%20images%20found%22)%3Awindow.open(%22%22%2C%22Images%22).document.write(t.join(%22%22))%7D()%3B" 
+                 class="bookmarklet bg-indigo-600 text-white px-4 py-2 rounded shadow hover:bg-indigo-700 cursor-move"
+                 onclick="event.preventDefault(); alert('Don\'t click! Drag this button to your bookmarks bar instead.');">
+                Quick Image Saver
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Source Code:</h3>
+          <pre class="bg-gray-100 p-4 rounded-lg overflow-auto text-sm"><code>javascript: (function () {
+    var imgs = document.getElementsByTagName(&quot;img&quot;);
+    var imgSrcs = [];
+    for (var i = 0; i &lt; imgs.length; i++) {
+        if (imgs[i].src) imgSrcs.push(&#039;&lt;a href=&quot;&#039; + imgs[i].src + &#039;&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;&#039; + imgs[i].src + &#039;&quot; style=&quot;max-height:200px;&quot;&gt;&lt;/a&gt;&#039;);
+    }
+    if (imgSrcs.length === 0) {
+        alert(&quot;No images found&quot;);
+    } else {
+        var win = window.open(&quot;&quot;, &quot;Images&quot;);
+        win.document.write(imgSrcs.join(&quot;&quot;));
+    }
+})();</code></pre>
+        </div>
+      </div>
+      
+      <div class="flex">
+        <a href="/bookmarklets" class="text-indigo-600 hover:text-indigo-800">← Back to all bookmarklets</a>
+      </div>
+    </main>
+    
+    <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
+      <p>Drag bookmarklets to your bookmarks bar to install them. Don't click on them here.</p>
+      <p class="mt-2">
+        <a href="https://github.com/sam1am/bookmarklets" class="text-indigo-600 hover:underline">GitHub Repository</a>
+      </p>
+    </footer>
+  </div>
+  
+  <script>
+    // Prevent clicking on bookmarklets directly
+    document.querySelectorAll('.bookmarklet').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Don\'t click! Drag this button to your bookmarks bar instead.');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+Quick Image Saver
+---
+Display a simple list all images on a page for easy saving. Right click any image to save. 
+---
+javascript: (function () {
+    var imgs = document.getElementsByTagName("img");
+    var imgSrcs = [];
+    for (var i = 0; i < imgs.length; i++) {
+        if (imgs[i].src) imgSrcs.push('<a href="' + imgs[i].src + '" target="_blank"><img src="' + imgs[i].src + '" style="max-height:200px;"></a>');
+    }
+    if (imgSrcs.length === 0) {
+        alert("No images found");
+    } else {
+        var win = window.open("", "Images");
+        win.document.write(imgSrcs.join(""));
+    }
+})();

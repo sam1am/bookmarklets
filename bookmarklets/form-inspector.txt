@@ -1,0 +1,133 @@
+Form Inspector
+---
+Find any forms on the current page. Display a list of fields and ids. Copy the form information to json.
+---
+javascript: !(function () {
+    var e = document.getElementById("form-inspector");
+    if (e) {
+        document.body.removeChild(e);
+        return;
+    }
+    function t(e) {
+        if (0 === e.offsetWidth || 0 === e.offsetHeight) return !1;
+        let t = window.getComputedStyle(e);
+        if ("none" === t.display || "hidden" === t.visibility || "0" === t.opacity) return !1;
+        let l = e.parentElement;
+        for (; l; ) {
+            let n = window.getComputedStyle(l);
+            if ("none" === n.display || "hidden" === n.visibility || "0" === n.opacity) return !1;
+            l = l.parentElement;
+        }
+        return !0;
+    }
+    function l(e) {
+        if (e.id) {
+            let t = document.querySelector(`label[for="${e.id}"]`);
+            if (t && t.textContent.trim()) return t.textContent.trim();
+        }
+        let l = e.parentElement;
+        for (; l; ) {
+            if ("label" === l.tagName.toLowerCase() && l.textContent.trim()) {
+                let n = l.cloneNode(!0);
+                return Array.from(n.querySelectorAll("input, select, textarea, button")).forEach((e) => e.remove()), n.textContent.trim();
+            }
+            l = l.parentElement;
+        }
+        if (e.getAttribute("aria-labelledby")) {
+            let a = e.getAttribute("aria-labelledby"),
+                r = document.getElementById(a);
+            if (r && r.textContent.trim()) return r.textContent.trim();
+        }
+        return e.getAttribute("aria-label") ? e.getAttribute("aria-label").trim() : e.placeholder ? e.placeholder : "";
+    }
+    var n = document.createElement("div");
+    (n.id = "form-inspector"),
+        (n.style.position = "fixed"),
+        (n.style.top = "10px"),
+        (n.style.right = "10px"),
+        (n.style.width = "600px"),
+        (n.style.maxHeight = "90vh"),
+        (n.style.background = "white"),
+        (n.style.border = "2px solid #333"),
+        (n.style.borderRadius = "5px"),
+        (n.style.padding = "15px"),
+        (n.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)"),
+        (n.style.zIndex = "9999999"),
+        (n.style.overflowY = "auto"),
+        (n.style.fontFamily = "Arial, sans-serif"),
+        (n.style.fontSize = "14px");
+    var a = document.createElement("div");
+    (a.style.display = "flex"), (a.style.justifyContent = "space-between"), (a.style.marginBottom = "10px");
+    var r = document.createElement("h2");
+    (r.textContent = "Form Inspector"), (r.style.margin = "0"), (r.style.fontSize = "18px"), a.appendChild(r);
+    var i = document.createElement("div");
+    (i.style.display = "flex"), (i.style.gap = "10px");
+    var o = document.createElement("button");
+    (o.textContent = "Copy JSON"),
+        (o.style.cursor = "pointer"),
+        (o.onclick = function () {
+            var e = document.querySelectorAll("input, select, textarea"),
+                n = { elements: [] };
+            e.forEach(function (e) {
+                if ((e.name || e.id) && t(e)) {
+                    var a = { name: e.name || e.id, type: e.type || e.tagName.toLowerCase(), value: e.value || "", label: l(e) };
+                    ("checkbox" === e.type || "radio" === e.type) && (a.checked = e.checked), n.elements.push(a);
+                }
+            });
+            var a = JSON.stringify(n, null, 2);
+            navigator.clipboard.writeText(a).then(function () {
+                (o.textContent = "Copied!"),
+                    setTimeout(function () {
+                        o.textContent = "Copy JSON";
+                    }, 1500);
+            });
+        }),
+        i.appendChild(o);
+    var d = document.createElement("button");
+    (d.textContent = "\xd7"),
+        (d.style.cursor = "pointer"),
+        (d.onclick = function () {
+            document.body.removeChild(n);
+        }),
+        i.appendChild(d),
+        a.appendChild(i),
+        n.appendChild(a);
+    var p = document.createElement("div"),
+        s = Array.from(document.querySelectorAll("input, select, textarea")).filter((e) => (e.name || e.id) && t(e));
+    if (0 === s.length) {
+        var c = document.createElement("p");
+        (c.textContent = "No visible form elements found."), p.appendChild(c);
+    } else {
+        var y = document.createElement("table");
+        (y.style.width = "100%"), (y.style.borderCollapse = "collapse");
+        var m = document.createElement("thead"),
+            u = document.createElement("tr");
+        ["Label", "Field Name", "Type", "Value"].forEach(function (e) {
+            var t = document.createElement("th");
+            (t.textContent = e), (t.style.textAlign = "left"), (t.style.padding = "5px"), (t.style.borderBottom = "2px solid #ddd"), u.appendChild(t);
+        }),
+            m.appendChild(u),
+            y.appendChild(m);
+        var f = document.createElement("tbody");
+        s.forEach(function (e) {
+            var t = document.createElement("tr");
+            t.style.borderBottom = "1px solid #eee";
+            var n = document.createElement("td");
+            (n.textContent = l(e) || "[no label]"), (n.style.padding = "5px"), t.appendChild(n);
+            var a = document.createElement("td");
+            (a.textContent = e.name || e.id || "[unnamed]"), (a.style.padding = "5px"), t.appendChild(a);
+            var r = document.createElement("td");
+            (r.textContent = e.type || e.tagName.toLowerCase()), (r.style.padding = "5px"), t.appendChild(r);
+            var i = document.createElement("td");
+            i.style.padding = "5px";
+            var o = "";
+            (o = "checkbox" === e.type || "radio" === e.type ? e.value + " (" + (e.checked ? "Checked" : "Unchecked") + ")" : "select" === e.tagName.toLowerCase() ? e.value + " (Selected)" : "password" === e.type ? "********" : e.value),
+                (i.textContent = o),
+                t.appendChild(i),
+                f.appendChild(t);
+        }),
+            y.appendChild(f),
+            p.appendChild(y);
+    }
+    n.appendChild(p), document.body.appendChild(n);
+})();

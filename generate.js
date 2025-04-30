@@ -199,7 +199,7 @@ function generateIndexPageHTML(bookmarklets, currentPage, totalPages) {
            onclick="event.preventDefault(); alert('Don\\'t click! Drag this button to your bookmarks bar instead.');">
           ${bookmarklet.title}
         </a>
-        <a href="./${bookmarklet.slug}/" class="ml-4 text-indigo-600 hover:text-indigo-800 text-sm self-center">Details →</a>
+        <a href="./${bookmarklet.slug}/index.html" class="ml-4 text-indigo-600 hover:text-indigo-800 text-sm self-center">Details →</a>
       </div>
     </div>
   `).join('');
