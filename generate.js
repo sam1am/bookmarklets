@@ -165,6 +165,9 @@ function generateBookmarkletPageHTML(bookmarklet) {
     
     <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
       <p>Drag bookmarklets to your bookmarks bar to install them. Don't click on them here.</p>
+      <p class="mt-2">
+        <a href="https://github.com/sam1am/bookmarklets" class="text-indigo-600 hover:underline">GitHub Repository</a>
+      </p>
     </footer>
   </div>
   
@@ -216,6 +219,18 @@ function generateIndexPageHTML(bookmarklets, currentPage, totalPages) {
       <p class="text-gray-600">A collection of useful browser bookmarklets</p>
     </header>
     
+    <div class="mb-8 bg-indigo-50 p-6 rounded-lg border border-indigo-200">
+      <h2 class="text-xl font-semibold text-indigo-800 mb-3">What are Bookmarklets?</h2>
+      <p class="text-gray-700 mb-3">
+        Bookmarklets are special browser bookmarks that run JavaScript code instead of opening a webpage. 
+        They allow you to add new features to your browser and perform useful actions on the current page with just one click.
+      </p>
+      <p class="text-gray-700">
+        Unlike browser extensions, bookmarklets don't require installation approval, don't run in the background, 
+        and don't need to be updated. They're a simple, lightweight way to enhance your browsing experience.
+      </p>
+    </div>
+    
     <div class="mb-8 bg-blue-50 p-4 rounded-lg border border-blue-200">
       <h2 class="text-lg font-semibold text-blue-700 mb-2">How to Install Bookmarklets:</h2>
       <ol class="list-decimal pl-6 space-y-2">
@@ -236,6 +251,9 @@ function generateIndexPageHTML(bookmarklets, currentPage, totalPages) {
     
     <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
       <p>Drag bookmarklets to your bookmarks bar to install them. Don't click on them here.</p>
+      <p class="mt-2">
+        <a href="https://github.com/sam1am/bookmarklets" class="text-indigo-600 hover:underline">GitHub Repository</a>
+      </p>
     </footer>
   </div>
   
@@ -295,4 +313,4 @@ function escapeHTML(str) {
 }
 
 // Start the script
-main();``
+main();
