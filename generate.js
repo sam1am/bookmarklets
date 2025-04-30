@@ -5,7 +5,7 @@ const slugify = require('slugify');
 
 // Configuration
 const BOOKMARKLETS_DIR = './bookmarklets';
-const OUTPUT_DIR = './site';
+const OUTPUT_DIR = './docs';
 const BOOKMARKLETS_PER_PAGE = 10;
 
 async function main() {
