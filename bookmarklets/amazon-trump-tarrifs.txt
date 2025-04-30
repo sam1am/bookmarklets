@@ -1,6 +1,6 @@
 Amazon Trump Tarrif Calculator
 ---
-On any Amazon product page, this bookmarklet will show how much of the price comes from Trump's tarrifs. It pulls the current tarrif rate from https://www.tradecomplianceresourcehub.com/2025/04/29/trump-2-0-tariff-tracker/ using r.jina.ai and displays the calculation at the top of the product page. 
+On any Amazon product page, this bookmarklet will estimate how much of the price comes from Trump's tarrifs. It pulls the current tarrif rate from https://www.tradecomplianceresourcehub.com/2025/04/29/trump-2-0-tariff-tracker/ using r.jina.ai and displays the calculation at the top of the product page. This code assumes the tarrif is already included in the price. It will only work on pages where the country of origin is explicitly listed. 
 ---
 javascript:(function(){
   // Create a loading indicator
