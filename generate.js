@@ -131,7 +131,7 @@ function generateBookmarkletPageHTML(bookmarklet) {
     <header class="mb-8">
       <div class="flex justify-between items-center">
         <h1 class="text-3xl font-bold text-indigo-700">
-          <a href="/" class="hover:text-indigo-900">Bookmarklets</a>
+          <a href="/bookmarklets" class="hover:text-indigo-900">Bookmarklets</a>
         </h1>
       </div>
     </header>
