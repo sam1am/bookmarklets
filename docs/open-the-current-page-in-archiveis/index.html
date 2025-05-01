@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open the current page in archive.is - Bookmarklet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <header class="mb-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-indigo-700">
+          <a href="/bookmarklets" class="hover:text-indigo-900">Bookmarklets</a>
+        </h1>
+      </div>
+    </header>
+    
+    <main>
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Open the current page in archive.is</h2>
+        <div class="prose max-w-none mb-6">
+          <p>Opens the current page with archive.is, which will save a snapshot of the page and often bypasses paywalls.</p>
+        </div>
+        
+        
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">Installation:</h3>
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <p class="mb-4">Drag this button to your bookmarks bar:</p>
+            <div class="flex">
+              <a href="javascript:!function()%7Bvar%20n%3Dwindow.location.href%2Co%3D%22https%3A%2F%2Farchive.is%2Fsubmit%2F%3Furl%3D%22%2BencodeURIComponent(n)%3Bwindow.open(o%2C%22_blank%22)%7D()%3B" 
+                 class="bookmarklet bg-indigo-600 text-white px-4 py-2 rounded shadow hover:bg-indigo-700 cursor-move"
+                 onclick="event.preventDefault(); alert('Don\'t click! Drag this button to your bookmarks bar instead.');">
+                Open the current page in archive.is
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Source Code:</h3>
+          <div class="mb-6">
+          <a href="https://perplexity.ai/search?q=how%20does%20the%20script%20located%20at%20https%3A%2F%2Fsam1am.github.io%2Fbookmarklets%2Fopen-the-current-page-in-archiveis%2Findex.html%20work%3F%20Is%20it%20safe%3F" 
+             class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600 inline-block"
+             target="_blank">
+            Is this script safe?
+          </a>
+        </div>
+          <pre class="bg-gray-100 p-4 rounded-lg overflow-auto text-sm"><code>javascript: (function () {
+    var currentUrl = window.location.href;
+    var encodedUrl = encodeURIComponent(currentUrl);
+    var archiveUrl = &quot;https://archive.is/submit/?url=&quot; + encodedUrl;
+    window.open(archiveUrl, &quot;_blank&quot;);
+})();</code></pre>
+        </div>
+      </div>
+      
+      <div class="flex">
+        <a href="/bookmarklets" class="text-indigo-600 hover:text-indigo-800">← Back to all bookmarklets</a>
+      </div>
+    </main>
+    
+    <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
+      <p>Drag bookmarklets to your bookmarks bar to install them. Don't click on them here.</p>
+      <p class="mt-2">
+        <a href="https://github.com/sam1am/bookmarklets" class="text-indigo-600 hover:underline">GitHub Repository</a>
+      </p>
+    </footer>
+  </div>
+  
+  <script>
+    // Prevent clicking on bookmarklets directly
+    document.querySelectorAll('.bookmarklet').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Don\'t click! Drag this button to your bookmarks bar instead.');
+      });
+    });
+  </script>
+</body>
+</html>

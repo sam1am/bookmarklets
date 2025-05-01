@@ -1,0 +1,10 @@
+Open the current page in archive.is
+---
+Opens the current page with archive.is, which will save a snapshot of the page and often bypasses paywalls.
+---
+javascript: (function () {
+    var currentUrl = window.location.href;
+    var encodedUrl = encodeURIComponent(currentUrl);
+    var archiveUrl = "https://archive.is/submit/?url=" + encodedUrl;
+    window.open(archiveUrl, "_blank");
+})();
