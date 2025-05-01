@@ -2,6 +2,8 @@
 
 A Node.js script that generates a static website for bookmarklet installation with a clean, responsive Tailwind CSS interface.
 
+View the live site here: https://sam1am.github.io/bookmarklets
+
 ## Overview
 
 This script processes bookmarklet files from a `./bookmarklets/` directory and generates a complete static website in the `./site/` directory. The generated website includes:

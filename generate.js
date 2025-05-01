@@ -113,7 +113,12 @@ async function generateIndexPages(bookmarklets) {
 }
 
 function generateBookmarkletPageHTML(bookmarklet) {
-    return `<!DOCTYPE html>
+  // Create the perplexity search query
+  const scriptUrl = `https://sam1am.github.io/bookmarklets/${bookmarklet.slug}/index.html`;
+  const searchQuery = `how does the script located at ${scriptUrl} work? Is it safe?`;
+  const perplexityUrl = `https://perplexity.ai/search?q=${encodeURIComponent(searchQuery)}`;
+
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -138,7 +143,8 @@ function generateBookmarkletPageHTML(bookmarklet) {
           <p>${bookmarklet.description}</p>
         </div>
         
-        <div class="mb-8">
+        
+        <div class="mb-6">
           <h3 class="text-lg font-semibold mb-2">Installation:</h3>
           <div class="bg-gray-100 p-4 rounded-lg">
             <p class="mb-4">Drag this button to your bookmarks bar:</p>
@@ -154,6 +160,13 @@ function generateBookmarkletPageHTML(bookmarklet) {
         
         <div>
           <h3 class="text-lg font-semibold mb-2">Source Code:</h3>
+          <div class="mb-6">
+          <a href="${perplexityUrl}" 
+             class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600 inline-block"
+             target="_blank">
+            Is this script safe?
+          </a>
+        </div>
           <pre class="bg-gray-100 p-4 rounded-lg overflow-auto text-sm"><code>${escapeHTML(bookmarklet.code)}</code></pre>
         </div>
       </div>
