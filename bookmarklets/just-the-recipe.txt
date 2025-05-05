@@ -1,0 +1,9 @@
+Recipe Cleaner
+---
+Get just the recipe from any recipe page without the life story.
+---
+javascript:(function(){
+    var currentUrl = encodeURIComponent(window.location.href);
+    var justTheRecipeUrl = 'https://www.justtherecipe.com/?url=' + currentUrl;
+    window.open(justTheRecipeUrl, '_blank');
+})();

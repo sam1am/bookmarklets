@@ -1,0 +1,9 @@
+Get Markdown of page
+---
+View a clean markdown version of the current page by opening it with r.jina.ai
+---
+javascript:(function(){
+    var currentUrl = encodeURIComponent(window.location.href);
+    var jinaUrl = 'https://r.jina.ai/' + currentUrl;
+    window.open(jinaUrl, '_blank');
+})();
