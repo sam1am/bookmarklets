@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Readable - Bookmarklet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <header class="mb-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-indigo-700">
+          <a href="/bookmarklets" class="hover:text-indigo-900">Bookmarklets</a>
+        </h1>
+      </div>
+    </header>
+    
+    <main>
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Readable</h2>
+        <div class="prose max-w-none mb-6">
+          <p>Make the current page readable and remove all the junk and ads.</p>
+        </div>
+        
+        
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">Installation:</h3>
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <p class="mb-4">Drag this button to your bookmarks bar:</p>
+            <div class="flex">
+              <a href="javascript:!function()%7Btry%7Bconst%20n%3Dfunction()%7Bconst%20n%3D%5B%22article%22%2C%22main%20article%22%2C'%5Brole%3D%22main%22%5D%20article'%2C%22.post-content%22%2C%22.entry-content%22%2C%22.article-content%22%2C%22.post-body%22%2C%22.article-body%22%2C%22%23article-body%22%2C%22.story-body%22%2C%22.content-body%22%2C%22main%22%2C'%5Brole%3D%22main%22%5D'%2C%22.main-content%22%2C%22%23main-content%22%2C%22.post%22%2C%22.entry%22%2C%22.content%22%5D%3Bfor(let%20e%20of%20n)%7Bconst%20n%3Ddocument.querySelector(e)%3Bif(n%26%26n.innerText.length%3E500)return%20n%7Dlet%20e%3D0%2Ct%3Dnull%3Breturn%20document.querySelectorAll(%22div%2C%20section%2C%20article%22).forEach((n%3D%3E%7Bconst%20o%3Dn.querySelectorAll(%22p%22)%2Ci%3Dn.innerText.length%3Bo.length%3Ee%26%26i%3E500%26%26(e%3Do.length%2Ct%3Dn)%7D))%2Ct%7D()%3Bif(!n)return%20void%20alert(%22Could%20not%20find%20article%20content%20on%20this%20page.%22)%3Bconst%20e%3Dfunction()%7Bconst%20n%3D%5B%22h1%22%2C%22article%20h1%22%2C%22.entry-title%22%2C%22.article-title%22%2C%22.post-title%22%2C'%5Bclass*%3D%22title%22%5D'%2C%22title%22%5D%3Bfor(let%20e%20of%20n)%7Bconst%20n%3Ddocument.querySelector(e)%3Bif(n%26%26n.innerText)return%20n.innerText.trim()%7Dreturn%20document.title%7D()%3B!function(n%2Ce)%7Bconst%20t%3Ddocument.implementation.createHTMLDocument(n)%2Co%3Dt.createElement(%22meta%22)%3Bo.name%3D%22viewport%22%2Co.content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1%22%2Ct.head.appendChild(o)%3Bconst%20i%3Dt.createElement(%22style%22)%3Bi.textContent%3D%22%5Cn%20%20%20%20%20%20%20%20%20%20%20%20*%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20box-sizing%3A%20border-box%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20body%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20Georgia%2C%20'Times%20New%20Roman'%2C%20serif%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20line-height%3A%201.6%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23333%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23f9f9f9%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2020px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20.container%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20max-width%3A%20700px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20white%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2040px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%200%2010px%20rgba(0%2C0%2C0%2C0.1)%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20h1%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%202.5em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20line-height%3A%201.2%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%200.5em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23222%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20h2%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%201.8em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin-top%3A%201.5em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%200.5em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23333%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20h3%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%201.4em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin-top%3A%201.2em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%200.5em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23444%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20p%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%201.3em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%201.1em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20img%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20max-width%3A%20100%25%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20auto%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%201.5em%20auto%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20a%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%230066cc%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20text-decoration%3A%20none%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20a%3Ahover%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20text-decoration%3A%20underline%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20blockquote%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20border-left%3A%204px%20solid%20%23ddd%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%201.5em%200%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20padding-left%3A%201.5em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23666%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-style%3A%20italic%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20pre%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23f4f4f4%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%201em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20overflow-x%3A%20auto%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%204px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20code%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23f4f4f4%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%200.2em%200.4em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%203px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20'Courier%20New'%2C%20monospace%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20.meta%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23666%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%200.9em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%202em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20padding-bottom%3A%201em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20border-bottom%3A%201px%20solid%20%23eee%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20.back-link%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20fixed%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20top%3A%2020px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20left%3A%2020px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23333%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20white%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2010px%2020px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%205px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20text-decoration%3A%20none%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20-apple-system%2C%20BlinkMacSystemFont%2C%20'Segoe%20UI'%2C%20sans-serif%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2014px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20.back-link%3Ahover%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23555%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20text-decoration%3A%20none%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%40media%20(max-width%3A%20768px)%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20body%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2010px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.container%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2020px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20h1%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%202em%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.back-link%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20static%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20inline-block%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%2020px%3B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%20%20%20%20%22%2Ct.head.appendChild(i)%3Bconst%20r%3Dt.createElement(%22div%22)%3Br.className%3D%22container%22%3Bconst%20a%3Dt.createElement(%22a%22)%3Ba.href%3Dwindow.location.href%2Ca.className%3D%22back-link%22%2Ca.textContent%3D%22%E2%86%90%20Back%20to%20original%22%2Ct.body.appendChild(a)%3Bconst%20c%3Dt.createElement(%22h1%22)%3Bc.textContent%3Dn%2Cr.appendChild(c)%3Bconst%20l%3Dt.createElement(%22div%22)%3Bl.className%3D%22meta%22%2Cl.textContent%3D%60Source%3A%20%24%7Bwindow.location.hostname%7D%60%2Cr.appendChild(l)%3Bconst%20d%3Dt.createElement(%22div%22)%3Bd.innerHTML%3De%2Cr.appendChild(d)%2Ct.body.appendChild(r)%2Cdocument.open()%2Cdocument.write(t.documentElement.outerHTML)%2Cdocument.close()%7D(e%2Cfunction(n)%7Bconst%20e%3Dn.cloneNode(!0)%3Breturn%5B%22script%22%2C%22style%22%2C%22iframe%22%2C%22form%22%2C%22button%22%2C%22.social-share%22%2C%22.share%22%2C%22.comments%22%2C%22.comment%22%2C%22.ad%22%2C%22.ads%22%2C%22.advertisement%22%2C%22.sidebar%22%2C%22.related%22%2C%22.newsletter%22%2C%22.popup%22%2C%22.modal%22%2C'%5Bclass*%3D%22share%22%5D'%2C'%5Bclass*%3D%22social%22%5D'%2C'%5Bid*%3D%22share%22%5D'%2C'%5Bid*%3D%22social%22%5D'%5D.forEach((n%3D%3E%7Be.querySelectorAll(n).forEach((n%3D%3En.remove()))%7D))%2Ce.querySelectorAll(%22*%22).forEach((n%3D%3E%7Bconst%20e%3D%5B%22href%22%2C%22src%22%2C%22alt%22%5D%3BArray.from(n.attributes).forEach((t%3D%3E%7Be.includes(t.name)%7C%7Cn.removeAttribute(t.name)%7D))%7D))%2Ce.innerHTML%7D(n))%7Dcatch(n)%7Balert(%22Error%20creating%20readable%20view%3A%20%22%2Bn.message)%7D%7D()%3B" 
+                 class="bookmarklet bg-indigo-600 text-white px-4 py-2 rounded shadow hover:bg-indigo-700 cursor-move"
+                 onclick="event.preventDefault(); alert('Don\'t click! Drag this button to your bookmarks bar instead.');">
+                Readable
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Source Code:</h3>
+          <div class="mb-6">
+          <a href="https://perplexity.ai/search?q=how%20does%20the%20script%20located%20at%20https%3A%2F%2Fsam1am.github.io%2Fbookmarklets%2Freadable%2Findex.html%20work%3F%20Is%20it%20safe%3F" 
+             class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600 inline-block"
+             target="_blank">
+            Is this script safe?
+          </a>
+        </div>
+          <pre class="bg-gray-100 p-4 rounded-lg overflow-auto text-sm"><code>javascript:(function(){
+    /* Find main content using multiple strategies */
+    function findMainContent() {
+        /* Strategy 1: Look for article tags and common content selectors */
+        const selectors = [
+            &#039;article&#039;,
+            &#039;main article&#039;,
+            &#039;[role=&quot;main&quot;] article&#039;,
+            &#039;.post-content&#039;,
+            &#039;.entry-content&#039;,
+            &#039;.article-content&#039;,
+            &#039;.post-body&#039;,
+            &#039;.article-body&#039;,
+            &#039;#article-body&#039;,
+            &#039;.story-body&#039;,
+            &#039;.content-body&#039;,
+            &#039;main&#039;,
+            &#039;[role=&quot;main&quot;]&#039;,
+            &#039;.main-content&#039;,
+            &#039;#main-content&#039;,
+            &#039;.post&#039;,
+            &#039;.entry&#039;,
+            &#039;.content&#039;
+        ];
+        
+        for (let selector of selectors) {
+            const element = document.querySelector(selector);
+            if (element &amp;&amp; element.innerText.length &gt; 500) {
+                return element;
+            }
+        }
+        
+        /* Strategy 2: Find element with most paragraph tags */
+        let maxParagraphs = 0;
+        let bestElement = null;
+        
+        const containers = document.querySelectorAll(&#039;div, section, article&#039;);
+        containers.forEach(container =&gt; {
+            const paragraphs = container.querySelectorAll(&#039;p&#039;);
+            const textLength = container.innerText.length;
+            
+            if (paragraphs.length &gt; maxParagraphs &amp;&amp; textLength &gt; 500) {
+                maxParagraphs = paragraphs.length;
+                bestElement = container;
+            }
+        });
+        
+        return bestElement;
+    }
+    
+    /* Find article title */
+    function findTitle() {
+        /* Try multiple title sources */
+        const titleSelectors = [
+            &#039;h1&#039;,
+            &#039;article h1&#039;,
+            &#039;.entry-title&#039;,
+            &#039;.article-title&#039;,
+            &#039;.post-title&#039;,
+            &#039;[class*=&quot;title&quot;]&#039;,
+            &#039;title&#039;
+        ];
+        
+        for (let selector of titleSelectors) {
+            const element = document.querySelector(selector);
+            if (element &amp;&amp; element.innerText) {
+                return element.innerText.trim();
+            }
+        }
+        
+        /* Fallback to page title */
+        return document.title;
+    }
+    
+    /* Extract clean content */
+    function extractContent(element) {
+        const clone = element.cloneNode(true);
+        
+        /* Remove unwanted elements */
+        const removeSelectors = [
+            &#039;script&#039;,
+            &#039;style&#039;,
+            &#039;iframe&#039;,
+            &#039;form&#039;,
+            &#039;button&#039;,
+            &#039;.social-share&#039;,
+            &#039;.share&#039;,
+            &#039;.comments&#039;,
+            &#039;.comment&#039;,
+            &#039;.ad&#039;,
+            &#039;.ads&#039;,
+            &#039;.advertisement&#039;,
+            &#039;.sidebar&#039;,
+            &#039;.related&#039;,
+            &#039;.newsletter&#039;,
+            &#039;.popup&#039;,
+            &#039;.modal&#039;,
+            &#039;[class*=&quot;share&quot;]&#039;,
+            &#039;[class*=&quot;social&quot;]&#039;,
+            &#039;[id*=&quot;share&quot;]&#039;,
+            &#039;[id*=&quot;social&quot;]&#039;
+        ];
+        
+        removeSelectors.forEach(selector =&gt; {
+            clone.querySelectorAll(selector).forEach(el =&gt; el.remove());
+        });
+        
+        /* Clean attributes */
+        clone.querySelectorAll(&#039;*&#039;).forEach(el =&gt; {
+            /* Keep only essential attributes */
+            const keepAttrs = [&#039;href&#039;, &#039;src&#039;, &#039;alt&#039;];
+            Array.from(el.attributes).forEach(attr =&gt; {
+                if (!keepAttrs.includes(attr.name)) {
+                    el.removeAttribute(attr.name);
+                }
+            });
+        });
+        
+        return clone.innerHTML;
+    }
+    
+    /* Create readable view */
+    function createReadableView(title, content) {
+        /* Create new document */
+        const newDoc = document.implementation.createHTMLDocument(title);
+        
+        /* Add meta viewport for mobile */
+        const viewport = newDoc.createElement(&#039;meta&#039;);
+        viewport.name = &#039;viewport&#039;;
+        viewport.content = &#039;width=device-width, initial-scale=1&#039;;
+        newDoc.head.appendChild(viewport);
+        
+        /* Add styles */
+        const style = newDoc.createElement(&#039;style&#039;);
+        style.textContent = `
+            * {
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: Georgia, &#039;Times New Roman&#039;, serif;
+                line-height: 1.6;
+                color: #333;
+                background: #f9f9f9;
+                margin: 0;
+                padding: 20px;
+            }
+            
+            .container {
+                max-width: 700px;
+                margin: 0 auto;
+                background: white;
+                padding: 40px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            
+            h1 {
+                font-size: 2.5em;
+                line-height: 1.2;
+                margin-bottom: 0.5em;
+                color: #222;
+            }
+            
+            h2 {
+                font-size: 1.8em;
+                margin-top: 1.5em;
+                margin-bottom: 0.5em;
+                color: #333;
+            }
+            
+            h3 {
+                font-size: 1.4em;
+                margin-top: 1.2em;
+                margin-bottom: 0.5em;
+                color: #444;
+            }
+            
+            p {
+                margin-bottom: 1.3em;
+                font-size: 1.1em;
+            }
+            
+            img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 1.5em auto;
+            }
+            
+            a {
+                color: #0066cc;
+                text-decoration: none;
+            }
+            
+            a:hover {
+                text-decoration: underline;
+            }
+            
+            blockquote {
+                border-left: 4px solid #ddd;
+                margin: 1.5em 0;
+                padding-left: 1.5em;
+                color: #666;
+                font-style: italic;
+            }
+            
+            pre {
+                background: #f4f4f4;
+                padding: 1em;
+                overflow-x: auto;
+                border-radius: 4px;
+            }
+            
+            code {
+                background: #f4f4f4;
+                padding: 0.2em 0.4em;
+                border-radius: 3px;
+                font-family: &#039;Courier New&#039;, monospace;
+            }
+            
+            .meta {
+                color: #666;
+                font-size: 0.9em;
+                margin-bottom: 2em;
+                padding-bottom: 1em;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .back-link {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                background: #333;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-family: -apple-system, BlinkMacSystemFont, &#039;Segoe UI&#039;, sans-serif;
+                font-size: 14px;
+            }
+            
+            .back-link:hover {
+                background: #555;
+                text-decoration: none;
+            }
+            
+            @media (max-width: 768px) {
+                body {
+                    padding: 10px;
+                }
+                
+                .container {
+                    padding: 20px;
+                }
+                
+                h1 {
+                    font-size: 2em;
+                }
+                
+                .back-link {
+                    position: static;
+                    display: inline-block;
+                    margin-bottom: 20px;
+                }
+            }
+        `;
+        newDoc.head.appendChild(style);
+        
+        /* Add content */
+        const container = newDoc.createElement(&#039;div&#039;);
+        container.className = &#039;container&#039;;
+        
+        /* Add back link */
+        const backLink = newDoc.createElement(&#039;a&#039;);
+        backLink.href = window.location.href;
+        backLink.className = &#039;back-link&#039;;
+        backLink.textContent = &#039;← Back to original&#039;;
+        newDoc.body.appendChild(backLink);
+        
+        /* Add title */
+        const titleElement = newDoc.createElement(&#039;h1&#039;);
+        titleElement.textContent = title;
+        container.appendChild(titleElement);
+        
+        /* Add metadata */
+        const meta = newDoc.createElement(&#039;div&#039;);
+        meta.className = &#039;meta&#039;;
+        meta.textContent = `Source: ${window.location.hostname}`;
+        container.appendChild(meta);
+        
+        /* Add content */
+        const contentDiv = newDoc.createElement(&#039;div&#039;);
+        contentDiv.innerHTML = content;
+        container.appendChild(contentDiv);
+        
+        newDoc.body.appendChild(container);
+        
+        /* Replace current document */
+        document.open();
+        document.write(newDoc.documentElement.outerHTML);
+        document.close();
+    }
+    
+    /* Main execution */
+    try {
+        const mainContent = findMainContent();
+        
+        if (!mainContent) {
+            alert(&#039;Could not find article content on this page.&#039;);
+            return;
+        }
+        
+        const title = findTitle();
+        const content = extractContent(mainContent);
+        
+        createReadableView(title, content);
+        
+    } catch (error) {
+        alert(&#039;Error creating readable view: &#039; + error.message);
+    }
+})();</code></pre>
+        </div>
+      </div>
+      
+      <div class="flex">
+        <a href="/bookmarklets" class="text-indigo-600 hover:text-indigo-800">← Back to all bookmarklets</a>
+      </div>
+    </main>
+    
+    <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
+      <p>Drag bookmarklets to your bookmarks bar to install them. Don't click on them here.</p>
+      <p class="mt-2">
+        <a href="https://github.com/sam1am/bookmarklets" class="text-indigo-600 hover:underline">GitHub Repository</a>
+      </p>
+    </footer>
+  </div>
+  
+  <script>
+    // Prevent clicking on bookmarklets directly
+    document.querySelectorAll('.bookmarklet').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Don\'t click! Drag this button to your bookmarks bar instead.');
+      });
+    });
+  </script>
+</body>
+</html>
