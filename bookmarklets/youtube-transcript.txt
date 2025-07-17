@@ -1,0 +1,44 @@
+Youtube Transcriber
+---
+Get a transcript of any youtube video. Uses https://www.youtube-transcript.io/. 
+---
+javascript:(function(){
+  // Get current URL
+  const url = window.location.href;
+  
+  // Validate it's a YouTube URL
+  if (!url.includes('youtube.com') && !url.includes('youtu.be')) {
+    alert('Error: This is not a YouTube page');
+    return;
+  }
+  
+  // Extract video ID based on URL format
+  let videoId = null;
+  
+  if (url.includes('youtube.com/watch')) {
+    // Standard YouTube URL
+    const urlParams = new URLSearchParams(window.location.search);
+    videoId = urlParams.get('v');
+  } else if (url.includes('youtu.be/')) {
+    // Shortened youtu.be URL
+    videoId = url.split('youtu.be/')[1].split(/[?#]/)[0];
+  } else if (url.includes('youtube.com/embed/')) {
+    // Embedded player URL
+    videoId = url.split('youtube.com/embed/')[1].split(/[?#]/)[0];
+  } else if (url.includes('youtube.com/shorts/')) {
+    // YouTube Shorts URL
+    videoId = url.split('youtube.com/shorts/')[1].split(/[?#]/)[0];
+  } else {
+    alert('Error: Cannot identify YouTube video on this page');
+    return;
+  }
+  
+  // Validate video ID
+  if (!videoId) {
+    alert('Error: Could not extract the YouTube video ID');
+    return;
+  }
+  
+  // Open transcript page in new tab
+  window.open('https://www.youtube-transcript.io/videos?id=' + videoId, '_blank');
+})();

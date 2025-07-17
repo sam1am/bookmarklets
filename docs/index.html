@@ -158,6 +158,21 @@
       </div>
     </div>
   
+    <div class="bg-white rounded-lg shadow-md p-6 mb-4 hover:shadow-lg transition duration-200">
+      <h2 class="text-xl font-bold text-indigo-700 mb-2">
+        <a href="./youtube-transcriber/index.html" class="hover:underline">Youtube Transcriber</a>
+      </h2>
+      <p class="text-gray-600 mb-4">Get a transcript of any youtube video. Uses https://www.youtube-transcript.io/.</p>
+      <div class="flex">
+        <a href="javascript:!function()%7Bconst%20e%3Dwindow.location.href%3Bif(!e.includes(%22youtube.com%22)%26%26!e.includes(%22youtu.be%22))return%20void%20alert(%22Error%3A%20This%20is%20not%20a%20YouTube%20page%22)%3Blet%20o%3Dnull%3Bif(e.includes(%22youtube.com%2Fwatch%22))%7Bo%3Dnew%20URLSearchParams(window.location.search).get(%22v%22)%7Delse%20if(e.includes(%22youtu.be%2F%22))o%3De.split(%22youtu.be%2F%22)%5B1%5D.split(%2F%5B%3F%23%5D%2F)%5B0%5D%3Belse%20if(e.includes(%22youtube.com%2Fembed%2F%22))o%3De.split(%22youtube.com%2Fembed%2F%22)%5B1%5D.split(%2F%5B%3F%23%5D%2F)%5B0%5D%3Belse%7Bif(!e.includes(%22youtube.com%2Fshorts%2F%22))return%20void%20alert(%22Error%3A%20Cannot%20identify%20YouTube%20video%20on%20this%20page%22)%3Bo%3De.split(%22youtube.com%2Fshorts%2F%22)%5B1%5D.split(%2F%5B%3F%23%5D%2F)%5B0%5D%7Do%3Fwindow.open(%22https%3A%2F%2Fwww.youtube-transcript.io%2Fvideos%3Fid%3D%22%2Bo%2C%22_blank%22)%3Aalert(%22Error%3A%20Could%20not%20extract%20the%20YouTube%20video%20ID%22)%7D()%3B" 
+           class="bookmarklet bg-indigo-600 text-white px-3 py-1 rounded shadow hover:bg-indigo-700 text-sm cursor-move"
+           onclick="event.preventDefault(); alert('Don\'t click! Drag this button to your bookmarks bar instead.');">
+          Youtube Transcriber
+        </a>
+        <a href="./youtube-transcriber/index.html" class="ml-4 text-indigo-600 hover:text-indigo-800 text-sm self-center">Details →</a>
+      </div>
+    </div>
+  
       </div>
       
       
