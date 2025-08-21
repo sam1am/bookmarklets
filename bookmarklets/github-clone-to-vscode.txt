@@ -1,0 +1,15 @@
+Github Clone And Open in VSCode
+---
+Clones the current repo and opens it in vscode locally.
+---
+javascript:(function(){
+  const urlParts = window.location.pathname.split('/');
+  if (urlParts.length >= 3) {
+    const owner = urlParts[1];
+    const repo = urlParts[2];
+    const vscodeUrl = `vscode://vscode.git/clone?url=https://github.com/${owner}/${repo}.git`;
+    window.open(vscodeUrl, '_blank');
+  } else {
+    alert('Not on a GitHub repo page!');
+  }
+})();
