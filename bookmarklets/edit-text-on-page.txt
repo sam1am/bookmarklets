@@ -2,4 +2,12 @@ Edit Text On Any page
 ---
 Allows you to edit the text on any webpage as if it were an editable document.
 ---
-javascript:document.body.contentEditable = 'true'; document.designMode='on'; void 0
+javascript:(function() {
+  try {
+    document.body.contentEditable = 'true';
+    document.designMode = 'on';
+    alert('Page is now editable!');
+  } catch (e) {
+    alert('Failed to make page editable: ' + e.message);
+  }
+})();

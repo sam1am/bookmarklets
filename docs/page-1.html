@@ -59,7 +59,7 @@
       </h2>
       <p class="text-gray-600 mb-4">Allows you to edit the text on any webpage as if it were an editable document.</p>
       <div class="flex">
-        <a href="javascript:document.body.contentEditable%3D%22true%22%2Cdocument.designMode%3D%22on%22%3B" 
+        <a href="javascript:!function()%7Btry%7Bdocument.body.contentEditable%3D%22true%22%2Cdocument.designMode%3D%22on%22%2Calert(%22Page%20is%20now%20editable!%22)%7Dcatch(e)%7Balert(%22Failed%20to%20make%20page%20editable%3A%20%22%2Be.message)%7D%7D()%3B" 
            class="bookmarklet bg-indigo-600 text-white px-3 py-1 rounded shadow hover:bg-indigo-700 text-sm cursor-move"
            onclick="event.preventDefault(); alert('Don\'t click! Drag this button to your bookmarks bar instead.');">
           Edit Text On Any page
