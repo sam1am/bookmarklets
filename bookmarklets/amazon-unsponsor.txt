@@ -1,0 +1,24 @@
+Amazon Unsponsor
+---
+Hide any sponsored listings from Amazon search results.
+---
+javascript:(function(){
+  const hide = (sel) => document.querySelectorAll(sel).forEach(el => el.style.display = 'none');
+
+  // Known sponsored containers
+  hide('[data-component-type="sp-sponsored-result"]');      // Sponsored result component
+  hide('[data-component-type="s-search-result"] [aria-label="Sponsored"]'); // Badge inside results
+  hide('.sp-cc-wrapper, .sp-cc, .adHolder, .AdHolder');     // Ad wrappers
+  hide('[data-asin][data-uuid*="Sponsored"]');              // Defensive: sponsored-marked tiles
+
+  // Fallback: hide any result tile that contains a visible “Sponsored” badge/text
+  document.querySelectorAll('[data-component-type="s-search-result"]').forEach(tile => {
+    const hasBadge = tile.querySelector('[aria-label="Sponsored"], .s-label-popover-default, .puis-label-popover-default');
+    const hasText = Array.from(tile.querySelectorAll('*')).some(n =>
+      /Sponsored/i.test(n.textContent || '') &&
+      getComputedStyle(n).visibility !== 'hidden' &&
+      getComputedStyle(n).display !== 'none'
+    );
+    if (hasBadge || hasText) tile.style.display = 'none';
+  });
+})();

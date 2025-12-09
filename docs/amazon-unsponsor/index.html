@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Unsponsor - Bookmarklet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <header class="mb-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-indigo-700">
+          <a href="/bookmarklets" class="hover:text-indigo-900">Bookmarklets</a>
+        </h1>
+      </div>
+    </header>
+    
+    <main>
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Amazon Unsponsor</h2>
+        <div class="prose max-w-none mb-6">
+          <p>Hide any sponsored listings from Amazon search results.</p>
+        </div>
+        
+        
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">Installation:</h3>
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <p class="mb-4">Drag this button to your bookmarks bar:</p>
+            <div class="flex">
+              <a href="javascript:!function()%7Bconst%20e%3De%3D%3Edocument.querySelectorAll(e).forEach((e%3D%3Ee.style.display%3D%22none%22))%3Be('%5Bdata-component-type%3D%22sp-sponsored-result%22%5D')%2Ce('%5Bdata-component-type%3D%22s-search-result%22%5D%20%5Baria-label%3D%22Sponsored%22%5D')%2Ce(%22.sp-cc-wrapper%2C%20.sp-cc%2C%20.adHolder%2C%20.AdHolder%22)%2Ce('%5Bdata-asin%5D%5Bdata-uuid*%3D%22Sponsored%22%5D')%2Cdocument.querySelectorAll('%5Bdata-component-type%3D%22s-search-result%22%5D').forEach((e%3D%3E%7Bconst%20o%3De.querySelector('%5Baria-label%3D%22Sponsored%22%5D%2C%20.s-label-popover-default%2C%20.puis-label-popover-default')%2Ct%3DArray.from(e.querySelectorAll(%22*%22)).some((e%3D%3E%2FSponsored%2Fi.test(e.textContent%7C%7C%22%22)%26%26%22hidden%22!%3D%3DgetComputedStyle(e).visibility%26%26%22none%22!%3D%3DgetComputedStyle(e).display))%3B(o%7C%7Ct)%26%26(e.style.display%3D%22none%22)%7D))%7D()%3B" 
+                 class="bookmarklet bg-indigo-600 text-white px-4 py-2 rounded shadow hover:bg-indigo-700 cursor-move"
+                 onclick="event.preventDefault(); alert('Don\'t click! Drag this button to your bookmarks bar instead.');">
+                Amazon Unsponsor
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Source Code:</h3>
+          <div class="mb-6">
+          <a href="https://perplexity.ai/search?q=how%20does%20the%20script%20located%20at%20https%3A%2F%2Fsam1am.github.io%2Fbookmarklets%2Famazon-unsponsor%2Findex.html%20work%3F%20Is%20it%20safe%3F" 
+             class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600 inline-block"
+             target="_blank">
+            Is this script safe?
+          </a>
+        </div>
+          <pre class="bg-gray-100 p-4 rounded-lg overflow-auto text-sm"><code>javascript:(function(){
+  const hide = (sel) =&gt; document.querySelectorAll(sel).forEach(el =&gt; el.style.display = &#039;none&#039;);
+
+  // Known sponsored containers
+  hide(&#039;[data-component-type=&quot;sp-sponsored-result&quot;]&#039;);      // Sponsored result component
+  hide(&#039;[data-component-type=&quot;s-search-result&quot;] [aria-label=&quot;Sponsored&quot;]&#039;); // Badge inside results
+  hide(&#039;.sp-cc-wrapper, .sp-cc, .adHolder, .AdHolder&#039;);     // Ad wrappers
+  hide(&#039;[data-asin][data-uuid*=&quot;Sponsored&quot;]&#039;);              // Defensive: sponsored-marked tiles
+
+  // Fallback: hide any result tile that contains a visible “Sponsored” badge/text
+  document.querySelectorAll(&#039;[data-component-type=&quot;s-search-result&quot;]&#039;).forEach(tile =&gt; {
+    const hasBadge = tile.querySelector(&#039;[aria-label=&quot;Sponsored&quot;], .s-label-popover-default, .puis-label-popover-default&#039;);
+    const hasText = Array.from(tile.querySelectorAll(&#039;*&#039;)).some(n =&gt;
+      /Sponsored/i.test(n.textContent || &#039;&#039;) &amp;&amp;
+      getComputedStyle(n).visibility !== &#039;hidden&#039; &amp;&amp;
+      getComputedStyle(n).display !== &#039;none&#039;
+    );
+    if (hasBadge || hasText) tile.style.display = &#039;none&#039;;
+  });
+})();</code></pre>
+        </div>
+      </div>
+      
+      <div class="flex">
+        <a href="/bookmarklets" class="text-indigo-600 hover:text-indigo-800">← Back to all bookmarklets</a>
+      </div>
+    </main>
+    
+    <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
+      <p>Drag bookmarklets to your bookmarks bar to install them. Don't click on them here.</p>
+      <p class="mt-2">
+        <a href="https://github.com/sam1am/bookmarklets" class="text-indigo-600 hover:underline">GitHub Repository</a>
+      </p>
+    </footer>
+  </div>
+  
+  <script>
+    // Prevent clicking on bookmarklets directly
+    document.querySelectorAll('.bookmarklet').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Don\'t click! Drag this button to your bookmarks bar instead.');
+      });
+    });
+  </script>
+</body>
+</html>

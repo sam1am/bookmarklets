@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmarklets Collection - Page 2</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-indigo-700 mb-2">Bookmarklets Collection</h1>
+      <p class="text-gray-600">A collection of useful browser bookmarklets</p>
+    </header>
+    
+    <div class="mb-8 bg-indigo-50 p-6 rounded-lg border border-indigo-200">
+      <h2 class="text-xl font-semibold text-indigo-800 mb-3">What are Bookmarklets?</h2>
+      <p class="text-gray-700 mb-3">
+        Bookmarklets are special browser bookmarks that run JavaScript code instead of opening a webpage. 
+        They allow you to add new features to your browser and perform useful actions on the current page with just one click.
+      </p>
+      <p class="text-gray-700">
+        Unlike browser extensions, bookmarklets don't require installation approval, don't run in the background, 
+        and don't need to be updated. They're a simple, lightweight way to enhance your browsing experience.
+      </p>
+    </div>
+    
+    <div class="mb-8 bg-blue-50 p-4 rounded-lg border border-blue-200">
+      <h2 class="text-lg font-semibold text-blue-700 mb-2">How to Install Bookmarklets:</h2>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li>Make sure your bookmarks bar is visible (Ctrl+Shift+B in most browsers)</li>
+        <li>Drag any button below to your bookmarks bar</li>
+        <li>Click the bookmarklet in your bookmarks bar when you want to use it</li>
+      </ol>
+      <p class="mt-4 text-blue-600 font-medium">Important: Don't click the buttons below! Drag them to your bookmarks bar.</p>
+    </div>
+    
+    <main>
+      <div class="grid gap-4">
+        
+    <div class="bg-white rounded-lg shadow-md p-6 mb-4 hover:shadow-lg transition duration-200">
+      <h2 class="text-xl font-bold text-indigo-700 mb-2">
+        <a href="./youtube-transcriber/index.html" class="hover:underline">Youtube Transcriber</a>
+      </h2>
+      <p class="text-gray-600 mb-4">Get a transcript of any youtube video. Uses https://www.youtube-transcript.io/.</p>
+      <div class="flex">
+        <a href="javascript:!function()%7Bconst%20e%3Dwindow.location.href%3Bif(!e.includes(%22youtube.com%22)%26%26!e.includes(%22youtu.be%22))return%20void%20alert(%22Error%3A%20This%20is%20not%20a%20YouTube%20page%22)%3Blet%20o%3Dnull%3Bif(e.includes(%22youtube.com%2Fwatch%22))%7Bo%3Dnew%20URLSearchParams(window.location.search).get(%22v%22)%7Delse%20if(e.includes(%22youtu.be%2F%22))o%3De.split(%22youtu.be%2F%22)%5B1%5D.split(%2F%5B%3F%23%5D%2F)%5B0%5D%3Belse%20if(e.includes(%22youtube.com%2Fembed%2F%22))o%3De.split(%22youtube.com%2Fembed%2F%22)%5B1%5D.split(%2F%5B%3F%23%5D%2F)%5B0%5D%3Belse%7Bif(!e.includes(%22youtube.com%2Fshorts%2F%22))return%20void%20alert(%22Error%3A%20Cannot%20identify%20YouTube%20video%20on%20this%20page%22)%3Bo%3De.split(%22youtube.com%2Fshorts%2F%22)%5B1%5D.split(%2F%5B%3F%23%5D%2F)%5B0%5D%7Do%3Fwindow.open(%22https%3A%2F%2Fwww.youtube-transcript.io%2Fvideos%3Fid%3D%22%2Bo%2C%22_blank%22)%3Aalert(%22Error%3A%20Could%20not%20extract%20the%20YouTube%20video%20ID%22)%7D()%3B" 
+           class="bookmarklet bg-indigo-600 text-white px-3 py-1 rounded shadow hover:bg-indigo-700 text-sm cursor-move"
+           onclick="event.preventDefault(); alert('Don\'t click! Drag this button to your bookmarks bar instead.');">
+          Youtube Transcriber
+        </a>
+        <a href="./youtube-transcriber/index.html" class="ml-4 text-indigo-600 hover:text-indigo-800 text-sm self-center">Details →</a>
+      </div>
+    </div>
+  
+      </div>
+      
+      <div class="mt-8 flex justify-center"><nav class="flex items-center space-x-2"><a href="index.html" class="px-4 py-2 bg-white rounded border border-gray-300 text-indigo-600 hover:bg-gray-50">Previous</a><a href="index.html" class="px-4 py-2 bg-white rounded border border-gray-300 text-indigo-600 hover:bg-gray-50">1</a><span class="px-4 py-2 bg-indigo-600 text-white rounded border border-indigo-600">2</span><span class="px-4 py-2 bg-gray-100 rounded border border-gray-300 text-gray-400 cursor-not-allowed">Next</span></nav></div>
+    </main>
+    
+    <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
+      <p>Drag bookmarklets to your bookmarks bar to install them. Don't click on them here.</p>
+      <p class="mt-2">
+        <a href="https://github.com/sam1am/bookmarklets" class="text-indigo-600 hover:underline">GitHub Repository</a>
+      </p>
+    </footer>
+  </div>
+  
+  <script>
+    // Prevent clicking on bookmarklets directly
+    document.querySelectorAll('.bookmarklet').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Don\'t click! Drag this button to your bookmarks bar instead.');
+      });
+    });
+  </script>
+</body>
+</html>

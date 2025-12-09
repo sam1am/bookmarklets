@@ -55,6 +55,21 @@
   
     <div class="bg-white rounded-lg shadow-md p-6 mb-4 hover:shadow-lg transition duration-200">
       <h2 class="text-xl font-bold text-indigo-700 mb-2">
+        <a href="./amazon-unsponsor/index.html" class="hover:underline">Amazon Unsponsor</a>
+      </h2>
+      <p class="text-gray-600 mb-4">Hide any sponsored listings from Amazon search results.</p>
+      <div class="flex">
+        <a href="javascript:!function()%7Bconst%20e%3De%3D%3Edocument.querySelectorAll(e).forEach((e%3D%3Ee.style.display%3D%22none%22))%3Be('%5Bdata-component-type%3D%22sp-sponsored-result%22%5D')%2Ce('%5Bdata-component-type%3D%22s-search-result%22%5D%20%5Baria-label%3D%22Sponsored%22%5D')%2Ce(%22.sp-cc-wrapper%2C%20.sp-cc%2C%20.adHolder%2C%20.AdHolder%22)%2Ce('%5Bdata-asin%5D%5Bdata-uuid*%3D%22Sponsored%22%5D')%2Cdocument.querySelectorAll('%5Bdata-component-type%3D%22s-search-result%22%5D').forEach((e%3D%3E%7Bconst%20o%3De.querySelector('%5Baria-label%3D%22Sponsored%22%5D%2C%20.s-label-popover-default%2C%20.puis-label-popover-default')%2Ct%3DArray.from(e.querySelectorAll(%22*%22)).some((e%3D%3E%2FSponsored%2Fi.test(e.textContent%7C%7C%22%22)%26%26%22hidden%22!%3D%3DgetComputedStyle(e).visibility%26%26%22none%22!%3D%3DgetComputedStyle(e).display))%3B(o%7C%7Ct)%26%26(e.style.display%3D%22none%22)%7D))%7D()%3B" 
+           class="bookmarklet bg-indigo-600 text-white px-3 py-1 rounded shadow hover:bg-indigo-700 text-sm cursor-move"
+           onclick="event.preventDefault(); alert('Don\'t click! Drag this button to your bookmarks bar instead.');">
+          Amazon Unsponsor
+        </a>
+        <a href="./amazon-unsponsor/index.html" class="ml-4 text-indigo-600 hover:text-indigo-800 text-sm self-center">Details →</a>
+      </div>
+    </div>
+  
+    <div class="bg-white rounded-lg shadow-md p-6 mb-4 hover:shadow-lg transition duration-200">
+      <h2 class="text-xl font-bold text-indigo-700 mb-2">
         <a href="./edit-text-on-any-page/index.html" class="hover:underline">Edit Text On Any page</a>
       </h2>
       <p class="text-gray-600 mb-4">Allows you to edit the text on any webpage as if it were an editable document.</p>
@@ -173,24 +188,9 @@
       </div>
     </div>
   
-    <div class="bg-white rounded-lg shadow-md p-6 mb-4 hover:shadow-lg transition duration-200">
-      <h2 class="text-xl font-bold text-indigo-700 mb-2">
-        <a href="./youtube-transcriber/index.html" class="hover:underline">Youtube Transcriber</a>
-      </h2>
-      <p class="text-gray-600 mb-4">Get a transcript of any youtube video. Uses https://www.youtube-transcript.io/.</p>
-      <div class="flex">
-        <a href="javascript:!function()%7Bconst%20e%3Dwindow.location.href%3Bif(!e.includes(%22youtube.com%22)%26%26!e.includes(%22youtu.be%22))return%20void%20alert(%22Error%3A%20This%20is%20not%20a%20YouTube%20page%22)%3Blet%20o%3Dnull%3Bif(e.includes(%22youtube.com%2Fwatch%22))%7Bo%3Dnew%20URLSearchParams(window.location.search).get(%22v%22)%7Delse%20if(e.includes(%22youtu.be%2F%22))o%3De.split(%22youtu.be%2F%22)%5B1%5D.split(%2F%5B%3F%23%5D%2F)%5B0%5D%3Belse%20if(e.includes(%22youtube.com%2Fembed%2F%22))o%3De.split(%22youtube.com%2Fembed%2F%22)%5B1%5D.split(%2F%5B%3F%23%5D%2F)%5B0%5D%3Belse%7Bif(!e.includes(%22youtube.com%2Fshorts%2F%22))return%20void%20alert(%22Error%3A%20Cannot%20identify%20YouTube%20video%20on%20this%20page%22)%3Bo%3De.split(%22youtube.com%2Fshorts%2F%22)%5B1%5D.split(%2F%5B%3F%23%5D%2F)%5B0%5D%7Do%3Fwindow.open(%22https%3A%2F%2Fwww.youtube-transcript.io%2Fvideos%3Fid%3D%22%2Bo%2C%22_blank%22)%3Aalert(%22Error%3A%20Could%20not%20extract%20the%20YouTube%20video%20ID%22)%7D()%3B" 
-           class="bookmarklet bg-indigo-600 text-white px-3 py-1 rounded shadow hover:bg-indigo-700 text-sm cursor-move"
-           onclick="event.preventDefault(); alert('Don\'t click! Drag this button to your bookmarks bar instead.');">
-          Youtube Transcriber
-        </a>
-        <a href="./youtube-transcriber/index.html" class="ml-4 text-indigo-600 hover:text-indigo-800 text-sm self-center">Details →</a>
-      </div>
-    </div>
-  
       </div>
       
-      
+      <div class="mt-8 flex justify-center"><nav class="flex items-center space-x-2"><span class="px-4 py-2 bg-gray-100 rounded border border-gray-300 text-gray-400 cursor-not-allowed">Previous</span><span class="px-4 py-2 bg-indigo-600 text-white rounded border border-indigo-600">1</span><a href="page-2.html" class="px-4 py-2 bg-white rounded border border-gray-300 text-indigo-600 hover:bg-gray-50">2</a><a href="page-2.html" class="px-4 py-2 bg-white rounded border border-gray-300 text-indigo-600 hover:bg-gray-50">Next</a></nav></div>
     </main>
     
     <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
