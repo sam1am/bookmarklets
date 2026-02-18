@@ -1,0 +1,12 @@
+CamelCamelCamel Price Tracker
+---
+Opens the current Amazon product page on CamelCamelCamel to view price history and set price alerts.
+---
+javascript:(function(){
+  var match = window.location.href.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/);
+  if (match) {
+    window.open('https://camelcamelcamel.com/product/' + match[1], '_blank');
+  } else {
+    alert('Could not find an Amazon product ID on this page.');
+  }
+})();
